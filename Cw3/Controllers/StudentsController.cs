@@ -47,7 +47,7 @@ namespace Cw3.Controllers
             return Ok(student);
         }
 
-        
+       
         [HttpPut]
         public OkObjectResult Put(int id)
         {           
