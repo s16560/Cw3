@@ -1,8 +1,9 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 using Cw3.DAL;
+using Cw3.Models;
 
-namespace Cw3.Models
+namespace Cw3.Controllers
 {
     [ApiController]
     [Route("api/students")] 
@@ -41,6 +42,8 @@ namespace Cw3.Models
         public IActionResult CreateStudent(Student student)
         {
             student.IndexNumber = $"s{new Random().Next(1, 20000)}";
+            _dbService.AddStudent(student);
+
             return Ok(student);
         }
 

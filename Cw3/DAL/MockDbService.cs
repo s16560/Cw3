@@ -6,16 +6,30 @@ namespace Cw3.DAL
 {
     public class MockDbService : IDbService
     {
-        private static IEnumerable<Student> _students;
+        private static List<Student> _students = new List<Student>();
 
-        static MockDbService()
+        public MockDbService()
         {
-            _students = new List<Student>
+            _students.Add(new Student
             {
-                new Student{IdStudent=1, FirstName="Jan", LastName="Kowalski"},
-                new Student{IdStudent=2, FirstName="Anna", LastName="Malewski"},
-                new Student{IdStudent=3, FirstName="Andrzej", LastName="Andrzejewicz"}
-            };
+                IdStudent = 1,
+                FirstName = "Jan",
+                LastName = "Kowalski",
+                IndexNumber = "s1234"
+            });
+
+            _students.Add(new Student
+            {
+                IdStudent = 2,
+                FirstName = "Andrzej",
+                LastName = "Kowalski",
+                IndexNumber = "s3423"
+            });
+        }
+
+        public void AddStudent(Student student)
+        {
+            _students.Add(student);
         }
 
         public IEnumerable<Student> GetStudents()
